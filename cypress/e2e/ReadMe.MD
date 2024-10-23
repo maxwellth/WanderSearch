@@ -1,6 +1,6 @@
 # Wander Search Functionality Automation test.
 
-Hi! 👋 Thanks for reviewing my test automation Test. I've created two different approaches to testing the Wander search functionality to showcase both advanced Cypress patterns and straightforward test writing.
+Hi! 👋 Thanks for reviewing my automation Test. I've created two different approaches to testing the Wander search functionality to showcase both advanced Cypress patterns and straightforward test writing.
 
 ## Project Overview
 
