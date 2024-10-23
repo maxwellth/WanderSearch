@@ -1,5 +1,4 @@
 describe("Wander Search Functionality", () => {
-  // Ensure the homepage is loaded before each test
   beforeEach(() => {
     cy.visit("/"); // Navigate to staging.wander.com homepage
     cy.title().should("eq", "Luxury Vacation Home Rentals by Wander"); // Verify the correct title
@@ -29,6 +28,7 @@ describe("Wander Search Functionality", () => {
       .should("be.visible")
       .should("contain", "Nov 1 - Nov 7");
   });
+
 
   // Test case: Perform a valid search using all filters including AI
   it("TC_002: Valid Search with All Filters (with AI)", () => {
@@ -215,7 +215,7 @@ describe("Wander Search Functionality", () => {
    cy.NoResultFound();
   });
 
-  it.only("TC_012: Verify No Results Found for Non-Existent AI Query", () => {
+  it("TC_012: Verify No Results Found for Non-Existent AI Query", () => {
     // Step 1: Select a location
     cy.openLocationDropdown();
     cy.SetCalifornia(); // Select California
@@ -242,27 +242,27 @@ describe("Wander Search Functionality", () => {
     // Step 2: Select a location (California)
     cy.SetCalifornia(); // Select California
 
-    // Open the date range filter and select the start and end dates
+    //Step 3: Open the date range filter and select the start and end dates
     cy.OpenDatePicker(); //Open Date Picker
     cy.Set1Week(); //Nov1-7
 
-    // Step 3: Open the price range filter
+    // Step 4: Open the price range filter
     cy.OpenPriceDropdown();
 
-    // Step 4: Set the minimum price to an invalid value
+    // Step 5: Set the minimum price to an invalid value
     cy.get(":nth-child(1) > :nth-child(2) > .relative > .border-w-6003")
       .clear() // Clears the input field
       .type("$90000"); // Types the new minimum price value
 
-    // Step 5: Set the maximum price to an invalid value
+    // Step 6: Set the maximum price to an invalid value
     cy.get(":nth-child(2) > :nth-child(2) > .relative > .border-w-6003")
       .clear() // Clears the input field
       .type("$1290000"); // Types the new maximum price value
 
-    // Step 6: Perform the search
+    // Step 7: Perform the search
     cy.Search();
 
-    // Step 7: Verify the search result indicates out-of-range prices
+    // Step 8: Verify the search result indicates out-of-range prices
     cy.OutOfPrice();
   
   });
@@ -315,56 +315,58 @@ describe("Wander Search Functionality", () => {
     30 minutes of skiing. Preferably in a quiet location but not too remote from restaurants and shops. 
     Would love a property with a games room and home theater.`.repeat(3);
 
-    // Input long AI search query
+    //Step 1: Input long AI search query
     cy.get(".relative.w-full > .border-w-6003").type(longQuery);
 
-    // Trigger search
+    //Step 2: Trigger search
     cy.Search();
 
-    // Validate results
+    //Step 3: Validate results
     cy.SearchResult();
   });
 
   // Test case: Search with all locations selected
   it("TC_017: All Locations Selected Search", () => {
-    // Open location filter
+    //Step 1: Open location filter
     cy.get("#landing-trip-filters > form > div:nth-child(1) > button")
       .should("be.visible")
       .click();
 
-    // Select all available locations
+    //Step 2: Select all available locations
     cy.get(".grid > .border-w-6003").click({ multiple: true });
 
-    // Trigger search
+    //Step 3: Trigger search
      cy.Search();
 
-    // Validate results
+    //Step 4: Validate results
     cy.get("#properties-list-or-map").should("be.visible");
   });
 
+
   // Test case: Search with multilingual AI query
   it("TC_018: Multilingual AI Search Query", () => {
-    // Input multilingual search query
+    //Step 1: Input multilingual search query
     cy.get(".relative.w-full > .border-w-6003").type(
       "Beach house cerca de la playa with piscina and vue sur l'océan"
     );
 
-    // Trigger search
+    //Step 2: Trigger search
      cy.Search();
 
-    // Validate results
+    //Step 3: Validate results
     cy.SearchResult();
   });
 
+
   // Test case: Search with emoji AI query
-  it("TC_019: Emoji Search Query", () => {
-    // Input `🏖️ 🏠` search query
+  it.only("TC_019: Emoji Search Query", () => {
+    //Step 1: Input `🏖️ 🏠` search query
     cy.get(".relative.w-full > .border-w-6003").type("🏖️ 🏠");
 
-    // Trigger search
+    //Step 2: Trigger search
      cy.Search();
 
-    // Validate results
+    //Step 3: Validate results
     cy.get("#properties-list-or-map").should("be.visible");
   });
 });
