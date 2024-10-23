@@ -45,12 +45,12 @@ cypress/
 ### Installation
 1. Clone this repository
 ```bash
-git clone []
+git clone https://github.com/maxwellth/WanderSearch
 ```
 
 2. Install dependencies
 ```bash
-npm install
+npm install cypress
 ```
 
 ### Running the Tests
@@ -80,7 +80,7 @@ cy.verifySearchResults();
 ```
 
 ## Test Coverage
-Both test suites cover the same core functionality:
+Both test suites cover the Similar core functionality:
 - Basic search functionality
 - Search result validation
 - Error handling
@@ -98,7 +98,7 @@ I structured this project to demonstrate not just my technical abilities with Cy
 
 
 ## Notes for Reviewers
-- Tests were carried out on Wander's staging platform
+- Tests were carried out on Wander's staging environment
 - Tests are focused on the search functionality as requested
 - Custom commands can be found in the support/commands.js file
 - Both test files achieve the same coverage but showcase different styles
