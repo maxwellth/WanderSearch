@@ -69,13 +69,13 @@ All custom commands are defined in `/cypress/support/commands.js`. Here's a quic
 
 ```javascript
 // Without custom commands (from WanderSearch(Simpler).cy.js):
-cy.get('[data-testid="search-input"]').type('Miami');
+cy.get('[data-testid="search-input"]').type('California');
 cy.get('[data-testid="search-button"]').click();
 cy.wait('@searchResults');
 cy.get('[data-testid="results-list"]').should('be.visible');
 
 // With custom commands (from WanderSearch(main).cy.js):
-cy.searchLocation('Miami');
+cy.searchLocation('California');
 cy.verifySearchResults();
 ```
 
