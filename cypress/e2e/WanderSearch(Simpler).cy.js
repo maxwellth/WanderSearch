@@ -12,7 +12,7 @@ describe("Wander Search Functionality", () => {
       .should("be.visible")
       .click();
     cy.get(":nth-child(3) > .grid > .border-w-6003").click();
- 
+
     //Step 2: Open the date range filter and select the start and end dates
     cy.get("#landing-trip-filters > form > div:nth-child(2) > button")
       .should("be.visible")
@@ -319,7 +319,7 @@ describe("Wander Search Functionality", () => {
   });
 
   // Test case: Search withLong AI query
-    it("TC_014: Long Description AI Search", () => {
+  it("TC_014: Long Description AI Search", () => {
     const longQuery =
       `I'm looking for a luxurious mountain retreat with stunning panoramic views, 
     a fully equipped kitchen, outdoor entertainment area, fire pit, hot tub, and modern amenities. 
@@ -339,53 +339,52 @@ describe("Wander Search Functionality", () => {
     cy.get("#properties-list > :nth-child(1)").should("be.visible");
   });
 
+  // Test case: Search with all locations selected
+  it("TC_015: All Locations Selected Search", () => {
+    //Step 1: Open location filter
+    cy.get("#landing-trip-filters > form > div:nth-child(1) > button")
+      .should("be.visible")
+      .click();
 
-// Test case: Search with all locations selected
-it("TC_015: All Locations Selected Search", () => {
-  //Step 1: Open location filter
-  cy.get("#landing-trip-filters > form > div:nth-child(1) > button")
-    .should("be.visible")
-    .click();
+    //Step 2: Select all available locations
+    cy.get(".grid > .border-w-6003").click({ multiple: true });
 
-  //Step 2: Select all available locations
-  cy.get(".grid > .border-w-6003").click({ multiple: true });
+    //Step 3: Trigger search
+    cy.get(
+      "body > main:nth-child(2) > div:nth-child(2) > div:nth-child(1) > form:nth-child(1) > div:nth-child(4) > div:nth-child(1) > button:nth-child(4)"
+    ).click();
 
-  //Step 3: Trigger search
-  cy.get(
-    "body > main:nth-child(2) > div:nth-child(2) > div:nth-child(1) > form:nth-child(1) > div:nth-child(4) > div:nth-child(1) > button:nth-child(4)"
-  ).click();
+    //Step 4: Validate results
+    cy.get("#properties-list > :nth-child(1)").should("be.visible");
+  });
 
-  //Step 4: Validate results
-  cy.get("#properties-list > :nth-child(1)").should("be.visible");
+  // Test case: Search with multilingual AI query
+  it("TC_016: Multilingual AI Search Query", () => {
+    //Step 1: Input multilingual search query
+    cy.get(".relative.w-full > .border-w-6003").type(
+      "Beach house cerca de la playa with piscina and vue sur l'océan"
+    );
+
+    //Step 2: Trigger search
+    cy.get(
+      "body > main:nth-child(2) > div:nth-child(2) > div:nth-child(1) > form:nth-child(1) > div:nth-child(4) > div:nth-child(1) > button:nth-child(4)"
+    ).click();
+
+    //Step 3: Validate results
+    cy.get("#properties-list > :nth-child(1)").should("be.visible");
+  });
+
+  // Test case: Search with emoji AI query
+  it("TC_017: Emoji Search Query", () => {
+    //Step 1: Input 🏖️ search query
+    cy.get(".relative.w-full > .border-w-6003").type("🏖️");
+
+    //Step 2: Trigger search
+    cy.get(
+      "body > main:nth-child(2) > div:nth-child(2) > div:nth-child(1) > form:nth-child(1) > div:nth-child(4) > div:nth-child(1) > button:nth-child(4)"
+    ).click();
+
+    //Step 3: Validate results
+    cy.get("#properties-list > :nth-child(1)").should("be.visible");
+  });
 });
-
-// Test case: Search with multilingual AI query
-it("TC_016: Multilingual AI Search Query", () => {
-  //Step 1: Input multilingual search query
-  cy.get(".relative.w-full > .border-w-6003").type(
-    "Beach house cerca de la playa with piscina and vue sur l'océan"
-  );
-
-  //Step 2: Trigger search
-  cy.get(
-    "body > main:nth-child(2) > div:nth-child(2) > div:nth-child(1) > form:nth-child(1) > div:nth-child(4) > div:nth-child(1) > button:nth-child(4)"
-  ).click();
-
-  //Step 3: Validate results
-  cy.get("#properties-list > :nth-child(1)").should("be.visible");
-});
-
-// Test case: Search with emoji AI query
-it("TC_017: Emoji Search Query", () => {
-  //Step 1: Input 🏖️ search query
-  cy.get(".relative.w-full > .border-w-6003").type("🏖️");
-
-  //Step 2: Trigger search
-  cy.get(
-    "body > main:nth-child(2) > div:nth-child(2) > div:nth-child(1) > form:nth-child(1) > div:nth-child(4) > div:nth-child(1) > button:nth-child(4)"
-  ).click();
-
-  //Step 3: Validate results
-  cy.get("#properties-list > :nth-child(1)").should("be.visible");
-});
-})

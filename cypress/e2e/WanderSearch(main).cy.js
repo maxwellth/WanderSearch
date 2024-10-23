@@ -66,18 +66,18 @@ describe("Wander Search Functionality", () => {
     //Step 3: Select occupancy
     cy.OpenOccupancyDropdown();
     cy.Occupants9();
- 
+
     //Step 4: Trigger the search
     cy.Search();
 
     //Step 5: Validate search results
     cy.SearchResult();
-  //   cy.verifyUrl({
-  //     checkIn: "2024-11-01",
-  //     checkOut: "2024-11-07",
-  //     minOccupancy: "3",
-  //     states: "california,hawaii",
-  //   });
+    //   cy.verifyUrl({
+    //     checkIn: "2024-11-01",
+    //     checkOut: "2024-11-07",
+    //     minOccupancy: "3",
+    //     states: "california,hawaii",
+    //   });
   });
 
   // Test case: Case-insensitive search for location
@@ -257,7 +257,6 @@ describe("Wander Search Functionality", () => {
     //Step 3: Validate results are displayed
     cy.SearchResult();
     cy.CaliResult();
-    
   });
 
   // Test case: Search with extremely short date range

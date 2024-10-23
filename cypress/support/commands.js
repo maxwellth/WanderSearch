@@ -1,3 +1,5 @@
+Commands;
+
 /// <reference types="cypress" />
 import "cypress-file-upload";
 // cypress/support/commands.js
@@ -31,6 +33,10 @@ Cypress.Commands.add("Set1Week", () => {
 
 Cypress.Commands.add("SetCalifornia", () => {
   cy.get(":nth-child(3) > .grid > .border-w-6003").click();
+});
+
+Cypress.Commands.add("AllLocations", () => {
+  cy.get(".grid > .border-w-6003").click({ multiple: true });
 });
 
 Cypress.Commands.add("Search", () => {
@@ -78,18 +84,17 @@ Cypress.Commands.add("SearchResult", () => {
   cy.get("#properties-list-or-map").should("be.visible");
 });
 
-
 Cypress.Commands.add("MountainFilter", () => {
-    cy.get('[data-category="mountains"]').click();
-  });
+  cy.get('[data-category="mountains"]').click();
+});
 
 Cypress.Commands.add("OceanFilter", () => {
-    cy.get('[data-category="ocean"]').click();
-  });
+  cy.get('[data-category="ocean"]').click();
+});
 
-  Cypress.Commands.add("Desert", () => {
-    cy.get('[data-category="desert"]').click();
-  });
+Cypress.Commands.add("Desert", () => {
+  cy.get('[data-category="desert"]').click();
+});
 
 Cypress.Commands.add("ForesFilter", () => {
   cy.get('[data-category="forest"]').click();
@@ -126,34 +131,69 @@ Cypress.Commands.add("NearMeFilter", () => {
 Cypress.Commands.add("LMDFilter", () => {
   cy.get('[data-category="last-minute-deals"]').click();
 });
- 
+
 Cypress.Commands.add("NoResultFound", () => {
-     cy.get("#properties-list")
-      .should("contain.text", "We couldn't find anything")
-      .and(
-        "contain.text",
-        "Sorry, there is nothing available that matches your filters"
-      );
-   });
+  cy.get("#properties-list")
+    .should("contain.text", "We couldn't find anything")
+    .and(
+      "contain.text",
+      "Sorry, there is nothing available that matches your filters"
+    );
+});
 
 Cypress.Commands.add("OpenPriceDropdown", () => {
-    cy.get(".relative.w-full > .border-w-6003").click();
-  });
+  cy.get(".relative.w-full > .border-w-6003").click();
+});
 
-  Cypress.Commands.add("OutOfPrice", () => {
-    cy.get(".col-span-full").should(
-      "contain.text",
-      "Out Of Price Range" || "Coming soon"
-    );
-  });
+Cypress.Commands.add("OutOfPrice", () => {
+  cy.get(".col-span-full").should(
+    "contain.text",
+    "Out Of Price Range" || "Coming soon"
+  );
+});
 
+Cypress.Commands.add("ShortDateRange", () => {
+  cy.get(
+    "#landing-trip-filters > form > div:nth-child(2) > div > div:nth-child(3) > div > div:nth-child(2) > div > div:nth-child(2) > div > button:nth-child(6)"
+  ).click(); // Select November 1
+  cy.get(
+    "#landing-trip-filters > form > div:nth-child(2) > div > div:nth-child(3) > div > div:nth-child(2) > div > div:nth-child(2) > div > button:nth-child(7)"
+  ).click(); // Select November 2
+});
 
+Cypress.Commands.add("CaliResult", () => {
+  cy.get("#landing-trip-filters > form > div:nth-child(1) > button").should(
+    "contain.text",
+    "california"
+  );
+});
 
-  Cypress.Commands.add("ShortDateRange", () => {
-    cy.get(
-      "#landing-trip-filters > form > div:nth-child(2) > div > div:nth-child(3) > div > div:nth-child(2) > div > div:nth-child(2) > div > button:nth-child(6)"
-    ).click(); // Select November 1
-    cy.get(
-      "#landing-trip-filters > form > div:nth-child(2) > div > div:nth-child(3) > div > div:nth-child(2) > div > div:nth-child(2) > div > button:nth-child(7)"
-    ).click(); // Select November 2
-  });
+Cypress.Commands.add("SetAmount", () => {
+  cy.get(":nth-child(1) > :nth-child(2) > .relative > .border-w-6003")
+    .clear() // Clears the input field
+    .type("$90000"); // Types the new minimum price value
+});
+
+Cypress.Commands.add("SetAmount2", () => {
+  cy.get(":nth-child(2) > :nth-child(2) > .relative > .border-w-6003")
+    .clear() // Clears the input field
+    .type("$1290000"); // Types the new maximum price value
+});
+
+Cypress.Commands.add("Occupants9", () => {
+  cy.get(".row-start-1 > :nth-child(3)").click();
+  cy.get(".row-start-1 > :nth-child(3)").click();
+  cy.get(".row-start-1 > :nth-child(3)").click();
+  cy.get(".row-start-1 > :nth-child(3)").click();
+  cy.get(".row-start-1 > :nth-child(3)").click();
+  cy.get(".row-start-1 > :nth-child(3)").click();
+  cy.get(".row-start-1 > :nth-child(3)").click();
+  cy.get(".row-start-1 > :nth-child(3)").click();
+  cy.get(".row-start-1 > :nth-child(3)").click();
+});
+
+Cypress.Commands.add("Occupants3", () => {
+  cy.get(".row-start-1 > :nth-child(3)").click();
+  cy.get(".row-start-1 > :nth-child(3)").click();
+  cy.get(".row-start-1 > :nth-child(3)").click();
+});
