@@ -146,3 +146,14 @@ Cypress.Commands.add("OpenPriceDropdown", () => {
       "Out Of Price Range" || "Coming soon"
     );
   });
+
+
+
+  Cypress.Commands.add("ShortDateRange", () => {
+    cy.get(
+      "#landing-trip-filters > form > div:nth-child(2) > div > div:nth-child(3) > div > div:nth-child(2) > div > div:nth-child(2) > div > button:nth-child(6)"
+    ).click(); // Select November 1
+    cy.get(
+      "#landing-trip-filters > form > div:nth-child(2) > div > div:nth-child(3) > div > div:nth-child(2) > div > div:nth-child(2) > div > button:nth-child(7)"
+    ).click(); // Select November 2
+  });
