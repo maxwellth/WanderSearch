@@ -1,5 +1,3 @@
-Commands;
-
 /// <reference types="cypress" />
 import "cypress-file-upload";
 // cypress/support/commands.js
