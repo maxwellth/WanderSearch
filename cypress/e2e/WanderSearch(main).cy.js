@@ -66,7 +66,7 @@ describe("Wander Search Functionality", () => {
     //Step 3: Select occupancy
     cy.OpenOccupancyDropdown();
     cy.Occupants9();
-
+ 
     //Step 4: Trigger the search
     cy.Search();
 

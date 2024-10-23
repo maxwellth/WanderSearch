@@ -12,7 +12,7 @@ describe("Wander Search Functionality", () => {
       .should("be.visible")
       .click();
     cy.get(":nth-child(3) > .grid > .border-w-6003").click();
-
+ 
     //Step 2: Open the date range filter and select the start and end dates
     cy.get("#landing-trip-filters > form > div:nth-child(2) > button")
       .should("be.visible")

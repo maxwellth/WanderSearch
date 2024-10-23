@@ -126,7 +126,7 @@ Cypress.Commands.add("NearMeFilter", () => {
 Cypress.Commands.add("LMDFilter", () => {
   cy.get('[data-category="last-minute-deals"]').click();
 });
-
+ 
 Cypress.Commands.add("NoResultFound", () => {
      cy.get("#properties-list")
       .should("contain.text", "We couldn't find anything")
