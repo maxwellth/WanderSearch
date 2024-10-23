@@ -1,4 +1,4 @@
-# Wander Search - Test Automation Test
+# Wander Search Functionality Automation test.
 
 Hi! 👋 Thanks for reviewing my test automation Test. I've created two different approaches to testing the Wander search functionality to showcase both advanced Cypress patterns and straightforward test writing.
 
@@ -6,14 +6,14 @@ Hi! 👋 Thanks for reviewing my test automation Test. I've created two differen
 
 This project contains two automated test suites for the Wander search feature:
 
-1. **`wander-test.cy.js`** - Using Cypress Custom Commands
-2. **`simplertest.cy.js`** - Using basic Cypress syntax
+1. **`WanderSearch(main).cy.js`** - Using Cypress Custom Commands
+2. **`WanderSearch(Simpler).cy.js`** - Using basic Cypress syntax
 
 ### Why Two Different Approaches?
 
 I chose to implement the tests in two different ways to demonstrate both my technical capabilities and my consideration for different audiences who might review or maintain this code.
 
-#### About the Custom Commands Approach (`wander-test.cy.js`)
+#### About the Custom Commands Approach (`WanderSearch(main).cy.js`)
 I implemented this version using Cypress Custom Commands to showcase how I would structure tests in a production environment. Custom Commands offer several key benefits:
 
 - **Code Reusability**: Common actions can be reused across multiple test files, making it easier to maintain consistent testing patterns
@@ -22,7 +22,7 @@ I implemented this version using Cypress Custom Commands to showcase how I would
 - **Better Error Handling**: We can build robust error checking into the commands themselves
 - **Domain-Specific Language**: We can create commands that speak the language of Wander's business domain
 
-#### About the Simple Approach (`simplertest.cy.js`)
+#### About the Simple Approach (`WanderSearch(Simpler).cy.js`)
 This version uses standard Cypress commands without any custom abstractions. I included this version because:
 - It's easier to understand for reviewers who might not be familiar with Cypress
 - It clearly shows each step of the test execution
@@ -32,8 +32,8 @@ This version uses standard Cypress commands without any custom abstractions. I i
 ```
 cypress/
 ├── e2e/
-│   ├── wander-test.cy.js
-│   └── simplertest.cy.js
+│   ├── WanderSearch(main).cy.js
+│   └── WanderSearch(Simpler).cy.js
 ├── support/
 │   ├── commands.js    # Where custom commands live
 │   └── e2e.js
@@ -45,12 +45,12 @@ cypress/
 ### Installation
 1. Clone this repository
 ```bash
-git clone []
+git clone https://github.com/maxwellth/WanderSearch
 ```
 
 2. Install dependencies
 ```bash
-npm install
+npm install cypress
 ```
 
 ### Running the Tests
@@ -68,23 +68,24 @@ npm run cypress:open
 All custom commands are defined in `/cypress/support/commands.js`. Here's a quick example of how the custom commands make the tests more readable:
 
 ```javascript
-// Without custom commands (from simplertest.cy.js):
-cy.get('[data-testid="search-input"]').type('Miami');
+// Without custom commands (from WanderSearch(Simpler).cy.js):
+cy.get('[data-testid="search-input"]').type('California');
 cy.get('[data-testid="search-button"]').click();
 cy.wait('@searchResults');
 cy.get('[data-testid="results-list"]').should('be.visible');
 
-// With custom commands (from wander-test.cy.js):
-cy.searchLocation('Miami');
+// With custom commands (from WanderSearch(main).cy.js):
+cy.searchLocation('California');
 cy.verifySearchResults();
 ```
 
 ## Test Coverage
-Both test suites cover the same core functionality:
+Both test suites cover the Similar core functionality:
 - Basic search functionality
 - Search result validation
 - Error handling
 - Edge cases (empty searches, special characters, etc.)
+- Complex Wander AI search
 
 ## Why This Approach?
 As a QA Engineer, I believe in writing tests that are:
@@ -95,10 +96,9 @@ As a QA Engineer, I believe in writing tests that are:
 
 I structured this project to demonstrate not just my technical abilities with Cypress, but also my understanding of good testing practices and consideration for future maintainers of the code.
 
-## Questions?
-If you have any questions about my implementation or would like me to explain any part in more detail, please don't hesitate to ask. I'm excited about the opportunity to join the Wander team and would love to discuss my approach further!
 
 ## Notes for Reviewers
+- Tests were carried out on Wander's staging environment
 - Tests are focused on the search functionality as requested
 - Custom commands can be found in the support/commands.js file
 - Both test files achieve the same coverage but showcase different styles
