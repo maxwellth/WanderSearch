@@ -195,3 +195,10 @@ Cypress.Commands.add("Occupants3", () => {
   cy.get(".row-start-1 > :nth-child(3)").click();
   cy.get(".row-start-1 > :nth-child(3)").click();
 });
+
+
+Cypress.Commands.add("AmenityFilter", () => {
+    cy.get("#landing-trip-filters>form>div:nth-child(4)>div:nth-child(2)>div>div:nth-child(1)>div:nth-child(2)>div>button").click();
+    cy.get(":nth-child(2) > .grid > .border-w-6003").click();
+
+})

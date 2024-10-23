@@ -37,6 +37,8 @@ describe("Wander Search Functionality", () => {
 
     //Step 5: Validate the search results are displayed
     cy.get("#properties-list > :nth-child(1)").should("be.visible");
+    //Expected result- its should show listing available in California between Nov 1 - Nov 7 that can accommodate 3 occupants
+    //Actual result- its showed listing available in California between Nov 1 - Nov 7 that can accommodate 3 occupants
   });
 
   // Test case: Perform a valid search using all filters including AI
@@ -74,6 +76,8 @@ describe("Wander Search Functionality", () => {
 
     //Step 6: Validate results
     cy.get("#properties-list > :nth-child(1)").should("be.visible");
+    //Expected result- its should show listing available that fall into the login Cabin category in California between Nov 1 - Nov 7 that can accommodate 3 or more occupants
+    //Actual result- its showed listing available that fell into the login Cabin category style of apartment in California between Nov 1 - Nov 7 that can accommodate 3 or more occupants
   });
 
   // Test case: Perform multi-location selection search (Florida & California)
@@ -109,6 +113,8 @@ describe("Wander Search Functionality", () => {
 
     //Step 5: Validate search results
     cy.get("#properties-list > :nth-child(1)").should("be.visible");
+    //Expected result- its should show listing available in both Hawaii and California between Nov 1 - Nov 7 that can accommodate 3 or more occupants
+    //Actual result- its showed listing available  in Hawaii and California between Nov 1 - Nov 7 that can accommodate 3 or more occupants
   });
 
   // Test case: Case-insensitive search for location
@@ -123,6 +129,8 @@ describe("Wander Search Functionality", () => {
 
     //Step 3: Validate the search results
     cy.get("#properties-list > :nth-child(1)").should("be.visible");
+    //Expected result- its should show listing available in California
+    //Actual result- its showed listing available in California
   });
 
   // Test case: Valid search using only location filter without AI
@@ -140,8 +148,11 @@ describe("Wander Search Functionality", () => {
 
     //Step 3: Validate results
     cy.get("#properties-list > :nth-child(1)").should("be.visible");
+    //Expected result- its should show listing available in California
+    //Actual result- its showed listing available in California
   });
 
+  
   // Test case: View mountain range property listings
   it("TC_006: View Mountain Range Properties", () => {
     //Step 1: Select the mountain category
@@ -149,6 +160,8 @@ describe("Wander Search Functionality", () => {
 
     //Step 2: Validate results
     cy.get("#properties-list > :nth-child(1)").should("be.visible");
+    //Expected result- its should show property listings available between Nov 1 - Nov 7
+    //Actual result- its showed property listings available between Nov 1 - Nov 7
   });
 
   // Test case: Test AI with complex natural language search query
@@ -166,6 +179,8 @@ describe("Wander Search Functionality", () => {
 
     //Step 3: Validate results
     cy.get("#properties-list > :nth-child(1)").should("be.visible");
+    //Expected result- its should show property listings available that can accommodate 3 or more occupants
+    //Actual result- its showed property listings available that can accommodate 3 or more occupants
   });
 
   // Test case: Test search with max occupants
@@ -384,6 +399,25 @@ describe("Wander Search Functionality", () => {
       "body > main:nth-child(2) > div:nth-child(2) > div:nth-child(1) > form:nth-child(1) > div:nth-child(4) > div:nth-child(1) > button:nth-child(4)"
     ).click();
 
+    //Step 3: Validate results
+    cy.get("#properties-list > :nth-child(1)").should("be.visible");
+    //Expected result- its should show Beach house listing
+    //Actual result- its showed Beach house listing
+  });
+
+  it.only("TC_018: Search with amenities", () => {
+    //Step 1: Search with 1 amenity
+    cy.get(".relative.w-full > .border-w-6003").click();
+    cy.get(
+      "#landing-trip-filters>form>div:nth-child(4)>div:nth-child(2)>div>div:nth-child(1)>div:nth-child(2)>div>button"
+    ).click();
+
+    cy.get(":nth-child(2) > .grid > .border-w-6003").click();
+
+    //Step 2: Trigger search
+    cy.get(
+      "body > main:nth-child(2) > div:nth-child(2) > div:nth-child(1) > form:nth-child(1) > div:nth-child(4) > div:nth-child(1) > button:nth-child(4)"
+    ).click();
     //Step 3: Validate results
     cy.get("#properties-list > :nth-child(1)").should("be.visible");
   });
