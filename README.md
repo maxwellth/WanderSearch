@@ -50,7 +50,7 @@ git clone https://github.com/maxwellth/WanderSearch
 
 2. Install dependencies
 ```bash
-npm install
+npm install cypress
 ```
 
 ### Running the Tests
