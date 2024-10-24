@@ -2,8 +2,7 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
-    email: process.env.CYPRESS_EMAIL,
-    password: process.env.CYPRESS_PASSWORD,
+    
     baseUrl: "https://staging.wander.com",
     experimentalStudio: true, // Enables the experimental studio feature
 
