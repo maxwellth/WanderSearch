@@ -31,7 +31,7 @@ This version uses standard Cypress commands without any custom abstractions. I i
 ## Project Structure
 ```
 cypress/
-├── e2e/
+├── e2e/                # Where the Test Files are located
 │   ├── WanderSearch(main).cy.js
 │   └── WanderSearch(Simpler).cy.js
 ├── support/
